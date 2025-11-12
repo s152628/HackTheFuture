@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple API Frontend</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="w-full max-w-md bg-white shadow-lg rounded-xl p-6">
+        <h1 class="text-2xl font-bold text-gray-800 mb-4">
+            API Data Fetcher
+        </h1>
+        <p class="text-sm text-gray-500 mb-6">
+            Endpoint: <code class="bg-gray-200 p-1 rounded">https://localhost/api/potion</code>
+        </p>
+
+        <!-- Fetch Button -->
+        <button id="fetchButton"
+            class="w-full px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition disabled:opacity-50"
+            onclick="fetchPotionData()">
+            Fetch Potion Data
+        </button>
+
+        <!-- Result Display Area -->
+        <div class="mt-6 border border-gray-300 rounded-lg p-4 bg-gray-50">
+            <h2 class="text-lg font-medium text-gray-700 mb-2">Result:</h2>
+            <pre id="results" class="whitespace-pre-wrap text-sm text-gray-700">
+                Press the button to retrieve data.
+            </pre>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'https://tjero.tjen.dev/api/potion';
+        const button = document.getElementById('fetchButton');
+        const resultsDiv = document.getElementById('results');
+
+        async function fetchPotionData() {
+            // Set loading state
+            button.disabled = true;
+            button.textContent = 'Fetching...';
+            resultsDiv.textContent = 'Loading...';
+            resultsDiv.className = 'whitespace-pre-wrap text-sm text-gray-700';
+
+            try {
+                // Attempt the actual fetch call
+                const response = await fetch(API_URL);
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`HTTP Error ${response.status}: ${errorText.substring(0, 100)}...`);
+                }
+
+                const data = await response.json();
+                
+                // Display raw JSON
+                resultsDiv.textContent = JSON.stringify(data, null, 2);
+                resultsDiv.classList.add('text-green-700'); // Indicate success
+
+            } catch (error) {
+                // Display the error clearly
+                console.error('Fetch Error:', error);
+                resultsDiv.textContent = `Error connecting to API: ${error.message}.\n\nNote: Localhost access often fails in sandboxes.`;
+                resultsDiv.classList.add('text-red-600');
+                resultsDiv.classList.remove('text-green-700');
+
+            } finally {
+                // Reset button state
+                button.disabled = false;
+                button.textContent = 'Fetch Potion Data';
+            }
+        }
+    </script>
+</body>
+</html>
