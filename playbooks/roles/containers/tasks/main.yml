@@ -1,12 +1,12 @@
 - name: pull frontend container
   podman_image:
-    name: quay.io/tjero/htf-frontend:latest
+    name: quay.io/tjero/htf-frontend
     state: present
  
 - name: run frontend container 
   containers.podman.podman_container:
     name: htf-frontend
-    image: quay.io/tjero/htf-frontend:latest
+    image: quay.io/tjero/htf-frontend
     state: started
     ports:
       - "8000:80"
@@ -15,13 +15,13 @@
 
 - name: pull backend container
   podman_image:
-    name: quay.io/tjero/htf-backend:latest
+    name: quay.io/tjero/htf-backend
     state: present
 
 - name: run backend container
   containers.podman.podman_container:
     name: htf-backend
-    image: quay.io/tjero/htf-backend:latest
+    image: quay.io/tjero/htf-backend
     state: started
     ports:
       - "3000:3000"
