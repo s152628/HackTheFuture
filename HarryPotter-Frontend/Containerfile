@@ -1,0 +1,6 @@
+FROM debian:latest
+WORKDIR /var/www/html
+COPY . .
+RUN apt-get update && apt-get install -y nginx
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
