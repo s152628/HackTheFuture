@@ -1,8 +1,6 @@
 webserver:
   hosts:
-    # 10.1.17.5:
-    116.203.240.243:
+    10.1.17.5:
   vars:
-    domain_name: "tjero.tjen.dev"
-    # domain_name: "www17.htf25.qubr.be"
+    domain_name: "www17.htf25.qubr.be"
     certbot_admin_email: "tjerohtf@tjen.dev"
