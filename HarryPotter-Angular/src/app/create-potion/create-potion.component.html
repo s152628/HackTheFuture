@@ -1,0 +1,130 @@
+<div class="container is-max-tablet">
+  <div class="field">
+    <label class="label">Name</label>
+    <div class="control">
+      <input
+        class="input"
+        type="text"
+        placeholder="Name your potion"
+        [(ngModel)]="potionName"
+      />
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Effect</label>
+    <textarea
+      class="input"
+      placeholder="What is the effect of your potion?"
+      name="text"
+      rows="4"
+      cols="40"
+      [(ngModel)]="potionEffect"
+    ></textarea>
+  </div>
+  <div class="field">
+    <label class="label">Side Effects (Optional)</label>
+    <div class="control">
+      <input
+        class="input"
+        type="text"
+        placeholder="Are there any side effects?"
+        [(ngModel)]="potionSideEffects"
+      />
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Characteristics (Optional)</label>
+    <div class="control">
+      <textarea
+        class="input"
+        placeholder="What are the characteristics of your potion?"
+        name="text"
+        rows="4"
+        cols="40"
+        [(ngModel)]="potionCharacteristics"
+      ></textarea>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Time to brew (Optional)</label>
+    <div class="control">
+      <input
+        class="input"
+        type="text"
+        placeholder="How long does it take to brew your potion?"
+        [(ngModel)]="potionTime"
+      />
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Difficulty (Optional)</label>
+    <div class="control">
+      <div class="select">
+        <select [(ngModel)]="potionDifficulty">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Ingredients</label>
+    <div class="control">
+      <input
+        class="input"
+        type="text"
+        placeholder="Give the ingredients of your potion seperated by a comma"
+        [(ngModel)]="ingredientName"
+      />
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">First name</label>
+    <div class="control">
+      <input
+        class="input"
+        type="text"
+        placeholder="Give your first name"
+        [(ngModel)]="InventorFirstName"
+      />
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Last name</label>
+    <div class="control">
+      <input
+        class="input"
+        type="text"
+        placeholder="what is your last name?"
+        [(ngModel)]="InventorLastName"
+      />
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Manufacturer (Optional)</label>
+    <div class="control">
+      <input
+        class="input"
+        type="text"
+        placeholder="Who is the manufacturer of your potion?"
+        [(ngModel)]="potionManufacturer"
+      />
+    </div>
+  </div>
+  <div class="control">
+    <button
+      class="button is-link"
+      (click)="addPotion()"
+      [disabled]="
+        !potionName ||
+        !potionEffect ||
+        !ingredientName ||
+        !InventorFirstName ||
+        !InventorLastName
+      "
+    >
+      Submit
+    </button>
+  </div>
+</div>

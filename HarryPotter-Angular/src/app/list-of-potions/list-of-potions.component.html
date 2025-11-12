@@ -1,0 +1,14 @@
+@for (potion of potions; track $index) {
+<a [routerLink]="'/potions/list/' + potion.name">
+  <div class="card">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4">{{ potion.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>
+
+}

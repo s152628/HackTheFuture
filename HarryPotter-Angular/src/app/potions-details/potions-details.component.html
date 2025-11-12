@@ -1,0 +1,54 @@
+@if (selectedPotion) {
+<title>{{ selectedPotion.name }}</title>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-4">
+        <figure>
+          <img src="/images/potions-images/Cauldron.png" />
+        </figure>
+      </div>
+      <div class="column is-8">
+        <h1 class="title">{{ selectedPotion.name }}</h1>
+        <h2 class="subtitle">Effect: {{ selectedPotion.effect }}</h2>
+        <h2 class="subtitle">
+          Inventors: @if (selectedPotion.inventors.length === 0) {Unkown}@else
+          {@for (inventor of selectedPotion.inventors; track $index) {
+          {{ inventor.firstName }} {{ inventor.lastName }} }}
+        </h2>
+        <div>
+          Manufacturer: @if (selectedPotion.manufacturer) {
+          {{ selectedPotion.manufacturer }} } @else { Unknown }
+        </div>
+        <br />
+        @if (selectedPotion.sideEffects) {
+        <div id="sideEffects">Warning: {{ selectedPotion.sideEffects }}</div>
+        <br />}
+
+        <div>
+          Ingredients: @if (selectedPotion.ingredients.length === 0) { Unknown }
+          <div class="list">
+            <ul>
+              @for (ingredient of selectedPotion.ingredients; track $index) {
+              <div class="list-item">
+                <li>{{ ingredient.name }}</li>
+              </div>
+              }
+            </ul>
+          </div>
+        </div>
+        <br />
+        <div>
+          Characteristics: @if (selectedPotion.characteristics) {
+          {{ selectedPotion.characteristics }} } @else { Unknown }
+        </div>
+        <div>
+          Time to brew: @if (selectedPotion.time) { {{ selectedPotion.time }} }
+          @else { Unknown }
+        </div>
+        <div>Difficulty: {{ selectedPotion.difficulty }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+}

@@ -1,0 +1,41 @@
+@if (selectedHouse) {
+<title>{{ selectedHouse.name }}</title>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-4">
+        <figure>
+          <img src="/images/houses-images/{{ selectedHouse.name }}.png" />
+        </figure>
+      </div>
+      <div class="column is-8">
+        <h1 class="title">{{ selectedHouse.name }}</h1>
+        <h2 class="subtitle">Founder: {{ selectedHouse.founder }}</h2>
+        <div>Animal: {{ selectedHouse.animal }}</div>
+        <div>Colors: {{ selectedHouse.houseColours }}</div>
+        <div>Element: {{ selectedHouse.element }}</div>
+        <div>Ghost: {{ selectedHouse.ghost }}</div>
+        <div>Common Room: {{ selectedHouse.commonRoom }}</div>
+        <br />
+        <div>
+          Heads of {{ selectedHouse.name }}:
+          <ul>
+            @for(head of selectedHouse.heads; track $index) {
+            <li>{{ head.firstName }} {{ head.lastName }}</li>
+            }
+          </ul>
+        </div>
+        <br />
+        <div>
+          Traits:
+          <ul>
+            @for(trait of selectedHouse.traits ;track $index) {
+            <li>{{ trait.name }}</li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+}
