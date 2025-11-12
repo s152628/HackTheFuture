@@ -13,11 +13,11 @@ export class HousesService {
   constructor( private httpClient: HttpClient ) { }
 
     getHouses(): Observable<Houses[]> {
-    let houses =  this.httpClient.get<Houses[]>('http://localhost:3000/api/houses');
+    let houses =  this.httpClient.get<Houses[]>('https://web17.htf25.qubr.be/api/houses');
     return houses;
   }
     getHouse(name: string): Observable<Houses> {
-    let house = this.httpClient.get<Houses>(`http://localhost:3000/api/houses/${name}`);
+    let house = this.httpClient.get<Houses>(`https://web17.htf25.qubr.be/api/houses/${name}`);
     return house;
     }
 }
